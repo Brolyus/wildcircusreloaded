@@ -1,14 +1,20 @@
-const http = require('http')
+const express = require('express')
+const app = express()
+const port = 8000
+const connection = require('./config')
+const bodyParser = require('body-parser')
 
-const hostname = '127.0.0.1'
-const port = 3000
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
 
-const server = http.createServer((req, res) => {
-	res.statusCode = 200
-	res.setHeader('Content-Type', 'text/plain')
-	res.end('Hello World')
+app.get('/', (request, response) => {
+	response.send('Hello World')
 })
 
-server.listen(port, hostname, () => {
-	console.log(`Server running at http://${hostname}:${port}/`)
+app.listen(port, err => {
+	if (err) {
+		throw new Error('Something bad happened...')
+	}
+
+	console.log(`Server is listening on ${port}`)
 })
