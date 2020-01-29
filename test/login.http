@@ -1,0 +1,10 @@
+POST http://localhost:8000/login
+Content-Type: application/json
+
+{
+    "email": "desousanthony@gmail.com",
+    "password": "test"
+}
+
+### Test get to check if i can connect my DB
+GET http://localhost:8000/
