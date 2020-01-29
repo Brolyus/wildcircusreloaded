@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/Brolyus/wildcircusreloaded/issues"
   },
-  "homepage": "https://github.com/Brolyus/wildcircusreloaded#readme"
+  "homepage": "https://github.com/Brolyus/wildcircusreloaded#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
