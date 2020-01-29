@@ -7,6 +7,12 @@ import {
 	Link,
 	Redirect
 } from 'react-router-dom'
+import Events from './components/Events'
+import Home from './components/Home'
+import Users from './components/Users'
+import Logout from './components/Logout'
+import Login from './components/Login'
+import Register from './components/Register'
 
 function App() {
 	return (
@@ -29,7 +35,7 @@ function App() {
 						<Link to='/register'>Register</Link>
 					</li>
 					<li>
-						<Link to='/events'>Say bye</Link>
+						<Link to='/logout'>Say bye</Link>
 					</li>
 				</ul>
 			</div>
@@ -39,22 +45,22 @@ function App() {
 					<Redirect to='/home' />
 				</Route>
 				<Route path='/home'>
-					<p>Hello this is Home</p>
+					<Home />
 				</Route>
 				<Route path='/users'>
-					<p>Hello this is Users</p>
+					<Users />
 				</Route>
 				<Route path='/events'>
-					<p>Hello this is the events</p>
+					<Events />
 				</Route>
 				<Route path='/register'>
-					<p>Hello this were you will register</p>
+					<Register />
 				</Route>
 				<Route path='/login'>
-					<p>Hello this were you'll log</p>
+					<Login />
 				</Route>
 				<Route path='/logout'>
-					<p>Hello this is were we say goodbye</p>
+					<Logout />
 				</Route>
 			</Switch>
 		</Router>
