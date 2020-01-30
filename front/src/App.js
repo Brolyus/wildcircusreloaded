@@ -4,7 +4,6 @@ import {
 	BrowserRouter as Router,
 	Switch,
 	Route,
-	Link,
 	Redirect
 } from 'react-router-dom'
 import Events from './components/Events'
@@ -13,32 +12,12 @@ import Users from './components/Users'
 import Logout from './components/Logout'
 import Login from './components/Login'
 import Register from './components/Register'
+import Navbar from './components/Navbar'
 
 function App() {
 	return (
 		<Router>
-			<div className='App'>
-				<ul>
-					<li>
-						<Link to='/home'>Home</Link>
-					</li>
-					<li>
-						<Link to='/users'>Users</Link>
-					</li>
-					<li>
-						<Link to='/events'>Events</Link>
-					</li>
-					<li>
-						<Link to='/login'>Sign In</Link>
-					</li>
-					<li>
-						<Link to='/register'>Register</Link>
-					</li>
-					<li>
-						<Link to='/logout'>Say bye</Link>
-					</li>
-				</ul>
-			</div>
+			<div className='App'></div>
 
 			<Switch>
 				<Route exact path='/'>
@@ -63,6 +42,7 @@ function App() {
 					<Logout />
 				</Route>
 			</Switch>
+			<Navbar />
 		</Router>
 	)
 }
