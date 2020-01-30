@@ -20,6 +20,7 @@ h3 {
 	position: fixed;
 	bottom: 0;
 	background-color: #b5a397;
+	width: 100vw;
 }
 
 .slick-next::before {

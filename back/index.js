@@ -73,13 +73,49 @@ app.get('/login', (req, res) => {
 
 app.get(
 	'/users',
-	passport.authenticate('local', {
-		successRedirect: '/users',
-		failureRedirect: '/login',
-		failureFlash: false
-	}),
+	// passport.authenticate('local', {
+	// 	successRedirect: '/users',
+	// 	failureRedirect: '/login',
+	// 	failureFlash: false
+	// }),
 	(req, res) => {
 		connection.query('SELECT * from user', (err, results) => {
+			if (err) {
+				res.sendStatus(500)
+			} else {
+				res.send(results)
+			}
+		})
+	}
+)
+
+app.get(
+	'/tickets',
+	// passport.authenticate('local', {
+	// 	successRedirect: '/users',
+	// 	failureRedirect: '/login',
+	// 	failureFlash: false
+	// }),
+	(req, res) => {
+		connection.query('SELECT * from ticket', (err, results) => {
+			if (err) {
+				res.sendStatus(500)
+			} else {
+				res.send(results)
+			}
+		})
+	}
+)
+
+app.get(
+	'/guests',
+	// passport.authenticate('local', {
+	// 	successRedirect: '/users',
+	// 	failureRedirect: '/login',
+	// 	failureFlash: false
+	// }),
+	(req, res) => {
+		connection.query('SELECT * from guest', (err, results) => {
 			if (err) {
 				res.sendStatus(500)
 			} else {
