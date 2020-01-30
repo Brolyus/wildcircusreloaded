@@ -3,15 +3,49 @@ const app = express()
 const port = 8000
 const connection = require('./config')
 const bodyParser = require('body-parser')
+const passport = require('passport')
+const LocalStrategy = require('passport-local').Strategy
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
+
+passport.use(
+	new LocalStrategy(
+		{
+			email: 'email',
+			password: 'password'
+		},
+		function(username, password, done) {
+			console.log('ok')
+			connection.query(
+				'SELECT email, password FROM user WHERE email = ?',
+				function(err, user) {
+					if (err) {
+						return done(err)
+					}
+					if (!user) {
+						return done(null, false, {
+							message: 'Mauvais identifiant.'
+						})
+					}
+					if (!user.validPassword(password)) {
+						return done(null, false, {
+							message: 'Mauvais mot de passe.'
+						})
+					}
+					return done(null, user)
+				}
+			)
+		}
+	)
+)
 
 app.get('/', (req, res) => {
 	res.send('Hello World')
 })
 
 app.post('/login', (req, res) => {
+	console.log('ok')
 	const authData = req.body
 	if (authData.email && authData.password) {
 		connection.query(
@@ -31,6 +65,28 @@ app.post('/login', (req, res) => {
 		)
 	}
 })
+
+app.get('/login', (req, res) => {
+	res.send('Hello User')
+})
+
+app.get(
+	'/users',
+	passport.authenticate('local', {
+		successRedirect: '/users',
+		failureRedirect: '/login',
+		failureFlash: false
+	}),
+	(req, res) => {
+		connection.query('SELECT * from user', (err, results) => {
+			if (err) {
+				res.sendStatus(500)
+			} else {
+				res.send(results)
+			}
+		})
+	}
+)
 
 app.listen(port, err => {
 	if (err) {
