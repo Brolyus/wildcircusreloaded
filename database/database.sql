@@ -39,5 +39,6 @@ CREATE TABLE wilder (
     id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     name VARCHAR (100) NOT NULL,
     description VARCHAR (1000) NOT NULL,
-    biography VARCHAR (1000) NOT NULL
+    biography VARCHAR (1000) NOT NULL,
+    image VARCHAR (1000) NOT NULL
 );

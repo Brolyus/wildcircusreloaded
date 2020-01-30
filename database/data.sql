@@ -124,15 +124,29 @@ VALUES
 TRUNCATE TABLE wilder;
 
 INSERT INTO
-    wilder(name, description, biography)
+    wilder(name, description, biography, image)
 VALUES
     (
         'Anthony De Sousa',
         'Chef de la sécurité, service des addictions',
-        'Ancien caféinomane reconverti'
+        'Ancien caféinomane reconverti',
+        'https://media-exp1.licdn.com/dms/image/C4D03AQHpbz3vaj94tw/profile-displayphoto-shrink_100_100/0?e=1585785600&v=beta&t=Vb94y31OQiNXkwrARXn6GudY-vKDx0fh5lWcN7y2o4c'
     ),
     (
         'Jessy Coraboeuf',
         'Responsable production',
-        "Travailleur acharné, il vérifie que l'activité de la société ne tourne jamais au ralenti"
+        "Travailleur acharné, il vérifie que l'activité de la société ne tourne jamais au ralenti",
+        'https://media-exp1.licdn.com/dms/image/C4E03AQH-hffg25kuKw/profile-displayphoto-shrink_200_200/0?e=1585785600&v=beta&t=c-UceOdyf2igdlF4kmvTtRgG3X1lEmC6jrfxUnfaiO0'
+    ),
+    (
+        'Alexis Tonello',
+        'Mime',
+        "Peu enclin à parler, il a trouvé sa voie dans la gestuelle",
+        'https://media-exp1.licdn.com/dms/image/C5603AQEVJ4FkUhQilw/profile-displayphoto-shrink_200_200/0?e=1585785600&v=beta&t=Mz6xmxfaZoC9QgQt9aUbXyqgHVxpIJ9TkZFGoEPhrRc'
+    ),
+    (
+        'Hugo Vallée',
+        'Présentateur',
+        "TBD",
+        'https://media-exp1.licdn.com/dms/image/C5603AQHrrDL9R2VmVw/profile-displayphoto-shrink_200_200/0?e=1585785600&v=beta&t=8x_X7K0nLORdZG64aBGCrm5WDnXftGy3WtMILaHSQOs'
     );
