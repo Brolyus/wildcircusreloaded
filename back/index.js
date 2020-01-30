@@ -91,7 +91,7 @@ app.get(
 
 app.get('/wilders', (req, res) => {
 	connection.query(
-		'SELECT id, name, description, biography FROM wilder',
+		'SELECT id, name, description, biography,image FROM wilder',
 		(err, results) => {
 			if (err) {
 				res.sendStatus(500)

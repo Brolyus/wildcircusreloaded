@@ -1,11 +1,5 @@
 import React from 'react'
-import './App.css'
-import {
-	BrowserRouter as Router,
-	Switch,
-	Route,
-	Redirect
-} from 'react-router-dom'
+import { Switch, Route, Redirect } from 'react-router-dom'
 import Events from './components/Events'
 import Home from './components/Home'
 import Users from './components/Users'
@@ -13,12 +7,11 @@ import Logout from './components/Logout'
 import Login from './components/Login'
 import Register from './components/Register'
 import Navbar from './components/Navbar'
+import './App.css'
 
 function App() {
 	return (
-		<Router>
-			<div className='App'></div>
-
+		<div className='App'>
 			<Switch>
 				<Route exact path='/'>
 					<Redirect to='/home' />
@@ -42,8 +35,9 @@ function App() {
 					<Logout />
 				</Route>
 			</Switch>
+
 			<Navbar />
-		</Router>
+		</div>
 	)
 }
 

@@ -18,9 +18,8 @@ class Home extends React.Component {
 	render() {
 		const settings = {
 			className: 'center',
-			dots: true,
 			lazyLoad: true,
-			centerMode: true,
+			centerMode: false,
 			infinite: true,
 			centerPadding: '60px',
 			slidesToShow: 1,
@@ -41,13 +40,14 @@ class Home extends React.Component {
 						maiores vel earum.
 					</p>
 				</div>
-				<div>
+				<div className='team'>
 					<h2>Nos équipes</h2>
 					<Slider {...settings}>
 						{this.state.wilderData.map(wilder => {
 							return (
-								<div key={wilder.id}>
+								<div key={wilder.id} className='card'>
 									<h3>{wilder.name}</h3>
+									<img src={wilder.image} alt={wilder.name} />
 									<p>{wilder.description}</p>
 									<p>{wilder.biography}</p>
 								</div>
