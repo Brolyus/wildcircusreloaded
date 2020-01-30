@@ -6,9 +6,11 @@ const bodyParser = require('body-parser')
 const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy
 const bcrypt = require('bcrypt')
+const cors = require('cors')
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use(cors())
 
 passport.use(
 	new LocalStrategy(
@@ -86,6 +88,19 @@ app.get(
 		})
 	}
 )
+
+app.get('/wilders', (req, res) => {
+	connection.query(
+		'SELECT id, name, description, biography FROM wilder',
+		(err, results) => {
+			if (err) {
+				res.sendStatus(500)
+			} else {
+				res.send(results)
+			}
+		}
+	)
+})
 
 app.listen(port, err => {
 	if (err) {
