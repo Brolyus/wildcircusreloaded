@@ -11,10 +11,13 @@ class Home extends React.Component {
 	render() {
 		const settings = {
 			className: 'center',
+			dots: true,
+			lazyLoad: true,
 			centerMode: true,
 			infinite: true,
 			centerPadding: '60px',
 			slidesToShow: 1,
+			slidesToScroll: 1,
 			speed: 500
 		}
 		return (
@@ -36,6 +39,7 @@ class Home extends React.Component {
 					<Slider {...settings}>
 						<div>
 							<h3>1</h3>
+							<p>test</p>
 						</div>
 						<div>
 							<h3>2</h3>
