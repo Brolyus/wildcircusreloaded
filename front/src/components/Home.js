@@ -11,9 +11,9 @@ class Home extends React.Component {
 		}
 	}
 	componentDidMount() {
-		axios
-			.get('http://localhost:8000/wilders')
-			.then(response => console.log(response))
+		axios.get('http://localhost:8000/wilders').then(response => {
+			this.setState({ wilderData: response.data })
+		})
 	}
 	render() {
 		const settings = {
@@ -44,25 +44,15 @@ class Home extends React.Component {
 				<div>
 					<h2>Nos équipes</h2>
 					<Slider {...settings}>
-						<div>
-							<h3>1</h3>
-							<p>test</p>
-						</div>
-						<div>
-							<h3>2</h3>
-						</div>
-						<div>
-							<h3>3</h3>
-						</div>
-						<div>
-							<h3>4</h3>
-						</div>
-						<div>
-							<h3>5</h3>
-						</div>
-						<div>
-							<h3>6</h3>
-						</div>
+						{this.state.wilderData.map(wilder => {
+							return (
+								<div key={wilder.id}>
+									<h3>{wilder.name}</h3>
+									<p>{wilder.description}</p>
+									<p>{wilder.biography}</p>
+								</div>
+							)
+						})}
 					</Slider>
 				</div>
 			</div>
