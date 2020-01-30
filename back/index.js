@@ -5,6 +5,7 @@ const connection = require('./config')
 const bodyParser = require('body-parser')
 const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy
+const bcrypt = require('bcrypt')
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -15,8 +16,8 @@ passport.use(
 			email: 'email',
 			password: 'password'
 		},
-		function(username, password, done) {
-			console.log('ok')
+		function(user, password, done) {
+			console.log(user)
 			connection.query(
 				'SELECT email, password FROM user WHERE email = ?',
 				function(err, user) {
@@ -52,8 +53,6 @@ app.post('/login', (req, res) => {
 			'SELECT email, password FROM user WHERE email = ? AND password = ?',
 			[authData.email, authData.password],
 			(err, results) => {
-				console.log(authData)
-				console.log(results)
 				if (err) {
 					res.status(500).send('Server error 500')
 				} else if (results.length === 0) {
