@@ -1,13 +1,20 @@
 import React from 'react'
 import '../styles/Home.css'
 import Slider from 'react-slick'
+import axios from 'axios'
 
 class Home extends React.Component {
 	constructor(props) {
 		super(props)
-		this.state = {}
+		this.state = {
+			wilderData: []
+		}
 	}
-	componentDidMount() {}
+	componentDidMount() {
+		axios
+			.get('http://localhost:8000/wilders')
+			.then(response => console.log(response))
+	}
 	render() {
 		const settings = {
 			className: 'center',
