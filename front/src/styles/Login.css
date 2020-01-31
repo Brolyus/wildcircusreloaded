@@ -1,0 +1,24 @@
+.underlined {
+	border-top-style: none;
+	border-left-style: none;
+	border-right-style: none;
+	border-bottom: solid black 1px;
+}
+
+.no-focus {
+	outline: none;
+}
+.login form {
+	display: flex;
+	flex-direction: column;
+	width: 60vw;
+	align-items: center;
+	margin: auto;
+	font-size: 1.5rem;
+	padding: 1rem;
+}
+
+.login form input {
+	padding: 0.5rem;
+	font-size: 1.2rem;
+}

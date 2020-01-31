@@ -1,0 +1,38 @@
+#img_ticket {
+	width: 100vw;
+}
+
+h2 {
+	margin-top: 0;
+}
+
+.profile {
+	text-align: center;
+}
+
+.qrcode {
+	width: 30vw;
+	height: 20vh;
+}
+
+.mon_ticket {
+	display: flex;
+	flex-direction: row;
+	width: 100vw;
+	padding-top: 2rem;
+}
+.guest_info {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.test {
+	display: flex;
+	flex-direction: column;
+	right: 0;
+	text-align: center;
+}
+.test ul {
+	flex-wrap: wrap;
+}

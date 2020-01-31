@@ -1,0 +1,11 @@
+### POST route to try to login, also allow to check if my DB is well connected.
+POST http://localhost:8000/login
+Content-Type: application/json
+
+{
+    "email": "desousanthony@gmail.com",
+    "password": "Test"
+}
+
+### Test
+GET http://localhost:8000/users
