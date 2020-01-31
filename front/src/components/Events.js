@@ -1,79 +1,87 @@
-import React from 'react'
-import '../styles/Events.css'
+import React, { Component } from 'react'
 import axios from 'axios'
+import '../styles/Form.css'
 
-class Events extends React.Component {
+class Events extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			id: null,
-			firstname: '',
-			lastname: '',
-			date: '',
-			role: '',
-			ticketDatas: [],
-			qrcode: '',
-			guests: []
+			activitiesData: null,
+			newTicket: {
+				firstname: '',
+				lastname: ''
+			}
 		}
 	}
-
 	componentDidMount() {
-		axios
-			.all([
-				axios.get('http://localhost:8000/users'),
-				axios.get('http://localhost:8000/tickets'),
-				axios.get('http://localhost:8000/guests')
-			])
-			.then(
-				axios.spread((usersRes, ticketsRes, guestsRes) => {
-					this.setState({
-						email: usersRes.data[1].email,
-						firstname: usersRes.data[1].firstname,
-						lastname: usersRes.data[1].lastname,
-						date: usersRes.data[1].date,
-						role: usersRes.data[1].role,
-						ticketDatas: ticketsRes.data,
-						qrcode: ticketsRes.data[0].qrcode,
-						guests: guestsRes.data
-					})
-				})
-			)
+		axios.get('http://localhost:8000/activities').then(response =>
+			this.setState({
+				activitiesData: response.data
+			})
+		)
 	}
+
+	onChange = e => {
+		this.setState({ [e.target.name]: e.target.value })
+	}
+	submitForm = e => {
+		const data = {
+			firstname: this.state.firstnamename,
+			lastname: this.state.lastname
+		}
+		axios
+			.post('http://localhost:8000/activities', data)
+			.then(alert('Billet réservé'))
+	}
+
 	render() {
-		return (
+		return this.state.activitiesData ? (
 			<div>
-				<div className='profile'>
-					<h2>Mes informations</h2>
-					<p>Nom: {this.state.lastname}</p>
-					<p>Prénom: {this.state.firstname}</p>
-					<p>Membre depuis le: {this.state.date}</p>
+				<div className='events'>
+					<h2> Our Events </h2>
+					{this.state.activitiesData.map(activity => {
+						return (
+							<div key={activity.id}>
+								<h3>{activity.name}</h3>
+								<p>{activity.description}</p>
+							</div>
+						)
+					})}
 				</div>
-				<div className='ticket'>
-					<h2>Mon ticket</h2>
-					<img
-						id='img_ticket'
-						src='https://media.istockphoto.com/vectors/circus-ticket-template-vector-id1162477112'
-					/>
-					<div className='mon_ticket'>
-						<img className='qrcode' src={this.state.qrcode} />
-						<div className='test'>
-							<h3>Liste de vos invités:</h3>
-							<ul>
-								{this.state.guests.map(guest => {
-									return (
-										<div className='guest_info'>
-											<li>
-												{guest.firstname}{' '}
-												{guest.lastname}
-											</li>
-										</div>
-									)
-								})}
-							</ul>
-						</div>
-					</div>
+				<hr />
+				<div className='buy_ticket'>
+					<h2>Réservez vos billets:</h2>
+					<form onSubmit={this.submitForm}>
+						<>
+							<label htmlFor='Nom'>Votre nom:</label>
+							<input
+								className='underlined no-focus'
+								type='text'
+								name='name'
+								id='name'
+								required
+								onInput={this.onChange}
+							/>
+						</>
+						<>
+							<label htmlFor='participants'>
+								Nombre d'invités :
+							</label>
+							<input
+								className='underlined no-focus'
+								type='number'
+								name='participants'
+								id='participants'
+								required
+								onInput={this.onChange}
+							/>
+						</>
+						<button id='submit'>Réserver</button>
+					</form>
 				</div>
 			</div>
+		) : (
+			<p> En chargement ... </p>
 		)
 	}
 }

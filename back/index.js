@@ -138,6 +138,19 @@ app.get('/wilders', (req, res) => {
 	)
 })
 
+app.get('/activities', (req, res) => {
+	connection.query(
+		'SELECT id, name, description FROM activity',
+		(err, results) => {
+			if (err) {
+				res.sendStatus(500)
+			} else {
+				res.send(results)
+			}
+		}
+	)
+})
+
 app.listen(port, err => {
 	if (err) {
 		throw new Error('Something bad happened...')

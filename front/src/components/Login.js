@@ -1,8 +1,10 @@
 import React from 'react'
+import '../styles/Login.css'
 
 const Login = () => {
 	return (
-		<div>
+		<div className='login'>
+			<h2>Connexion</h2>
 			<form>
 				<label htmlFor='email' className='space:stack'>
 					Adresse mail :

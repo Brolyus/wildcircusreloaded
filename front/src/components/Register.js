@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 //import axios from 'axios'
+import '../styles/Register.css'
 
 const Register = () => {
 	const [account, setAccount] = useState({
@@ -29,7 +30,9 @@ const Register = () => {
 	// 	}
 	// }
 	return (
-		<div>
+		<div className='register'>
+			<h2>Inscription:</h2>
+
 			<form>
 				<label htmlFor='email' className='space:stack'>
 					Adresse mail :

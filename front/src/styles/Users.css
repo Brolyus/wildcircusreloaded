@@ -11,14 +11,15 @@ h2 {
 }
 
 .qrcode {
-	width: 50vw;
-	height: auto;
+	width: 30vw;
+	height: 20vh;
 }
 
 .mon_ticket {
 	display: flex;
 	flex-direction: row;
 	width: 100vw;
+	padding-top: 2rem;
 }
 .guest_info {
 	display: flex;
@@ -29,7 +30,8 @@ h2 {
 .test {
 	display: flex;
 	flex-direction: column;
-	width: 50vw;
+	right: 0;
+	text-align: center;
 }
 .test ul {
 	flex-wrap: wrap;
